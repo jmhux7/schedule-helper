@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Button, Icon, Card, Row, Col, Input, CardPanel } from 'react-materialize';
 
 import HandleNewUser from './HandleNewUser';
 
@@ -28,12 +27,12 @@ export default class NewUserForm extends Component {
     render () {
         return (
             <form className="login-form" onSubmit={this._handleSubmit}>
-                <Input type="text" ref={(Input) => this._firstName = Input} label="First Name" />
-                <Input type="text" ref={(Input) => this._lastName = Input} label="Last Name" />
-                <Input type="email" ref={(Input) => this._email = Input} label="Email" />
-                <Input type="password" ref={(Input) => this._password = Input} label="Password" />
-                <Input type="password" ref={(Input) => this._passwordAgain = Input} label="Verify your password" />
-                <Button type="submit">Submit</Button>
+                <input type="text" ref={(Input) => this._firstName = Input} label="First Name" />
+                <input type="text" ref={(Input) => this._lastName = Input} label="Last Name" />
+                <input type="email" ref={(Input) => this._email = Input} label="Email" />
+                <input type="password" ref={(Input) => this._password = Input} label="Password" />
+                <input type="password" ref={(Input) => this._passwordAgain = Input} label="Verify your password" />
+                <button type="submit">Submit</button>
             </form>
         )
     }

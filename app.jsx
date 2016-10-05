@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, hashHistory } from 'react-router';
-import Home from './app/app';
+import LandingPage from './app/components/LandingPage/index';
+import './css/style.css';
+
+
 
 ReactDOM.render(
   <Router history={ hashHistory }>
-    <Route path="/" component={Home} />
+    <Route path="/" component={LandingPage} />
 
   </Router>,
 document.getElementById('app')

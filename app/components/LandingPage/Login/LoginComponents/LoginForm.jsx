@@ -1,7 +1,7 @@
 import React, { Image, Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { Button, Nav, NavItem, NavDropdown, MenuItem, Table, Grid, Row, Col, Input, FormGroup, Form, FormControl, ControlLabel } from 'react-bootstrap';
+import { Button, Nav, NavItem, NavDropdown, MenuItem, Table, Grid, Row, Col, Input, FormGroup, Form, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
 import HandleLogin from './HandleLogin'
 

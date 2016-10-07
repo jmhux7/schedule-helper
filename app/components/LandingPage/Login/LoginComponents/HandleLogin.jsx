@@ -19,7 +19,9 @@ export default class HandleLogin extends Component {
             cookie.save("userID", user.uid);
             app.database().ref('users/' + user.uid).on('value',function(snapshot){
                 var firstName = snapshot.child("first_name").val();
+                var isAdmin = snapshot.child("is_admin").val();
                 cookie.save("Name", firstName);
+                cookie.save("Admin", isAdmin);
                 window.location.href= "/";
             })
         }).catch(function(e){

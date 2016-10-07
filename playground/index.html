@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+h1 {
+  font-size: 16pt;
+}
+
+h2 {
+  font-size: 14pt;
+}
+
+p {
+  font-size: 12pt;
+  line-height: 12pt;
+  margin: 2pt;
+  padding-left: 20px;
+}
+
+</style>
+</head>
+<body>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.js" type="text/javascript"></script>
+<script src="schedule-master/schedule.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var p = later.parse.text;
+
+var teacherSchedules = [
+    {name: 'teacher3a', length: .5, availability: 'after 9:30am and before 11:10am or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher3b', length: .5, availability: 'after 9:30am and before 11:10am or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher3c', length: .5, availability: 'after 9:30am and before 11:10am or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher3d', length: .5, availability: 'after 9:30am and before 11:10am or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher4a', length: .5, availability: 'after 9:30am and before 10:20am or after 11:05am and before 12:15 or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher4b', length: .5, availability: 'after 9:30am and before 10:20am or after 11:05am and before 12:15 or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher4c', length: .5, availability: 'after 9:30am and before 10:20am or after 11:05am and before 12:15 or after 12:45 and before 2:15 or after 2:30'},
+    {name: 'teacher5a', length: .5, availability: 'after 10:15am and before 12:30 or after 1:00 and before 2:10 or after 2:25'},
+    {name: 'teacher5b', length: .5, availability: 'after 10:15am and before 12:30 or after 1:00 and before 2:10 or after 2:25'},
+    {name: 'teacher5c', length: .5, availability: 'after 10:15am and before 12:30 or after 1:00 and before 2:10 or after 2:25'}
+];
+
+var computerLab = [
+    {name: 'lab', availability: 'every weekday after 9:30am and before 3:55pm'}
+];
+
+var t = schedule.tasks()
+    .id(function(d) { return d.name; })
+    .duration(function(d) { return d.length * 60; })
+    .available(function(d) { return d.availability ? p(d.availability) : undefined; })
+    .priority(function(d, i) { return 100 - i; })
+    .minSchedule(function(d) { return d.length * 60; })
+    .resources(['lab']);
+
+var tasks = t(teacherSchedules);
+
+var r = schedule.resources()
+    .id(function(d) { return d.name; })
+    .available(function(d) { return d.availability ? p(d.availability) : undefined; });
+
+var resources = r(computerLab);
+
+var start = new Date (2016, 09, 10);
+schedule.date.localTime();
+
+var s = schedule.create(tasks, resources, null, start);
+
+for(var id in s.scheduledTasks) {
+  var st = s.scheduledTasks[id];
+  console.log(st);
+  document.write('<h2>' + id + '</h2>');
+  document.write('<p><b>Duration:</b> ' + st.duration + ' mins</p>');
+  document.write('<p><b>Start:</b> ' + new Date(st.earlyStart).toLocaleString() + '</p>');
+  document.write('<p><b>Finish:</b> ' + new Date(st.earlyFinish).toLocaleString() + '</p>');
+}
+
+</script>
+</html>

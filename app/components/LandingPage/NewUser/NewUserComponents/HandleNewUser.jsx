@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cookie from 'react-cookie';
 import HeroImage from './../../HeroImage';
 import NewUserForm from './NewUserForm';
+import NavBar from './../../../GlobalComponents/NavBar';
 var app = require('./../../../Firebase');
 
 
@@ -43,6 +44,7 @@ export default class HandleNewUser extends Component {
     return (
       <div>
         <HeroImage />
+        <NavBar />
         <NewUserForm signup={this._signup} />
       </div>
     );

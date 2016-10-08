@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { Button, Nav, NavItem, NavDropdown, MenuItem, Table, Grid, Row, Col, Input, FormGroup, Form, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
+import { Col, Row, Input, Button, CardPanel } from 'react-materialize';
 
 import HandleLogin from './HandleLogin'
 
@@ -43,35 +43,31 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="login-container">
                 <h3>Welcome to the Schedule Helper</h3>
-                <Form horizontal onSubmit={this._handleSubmit}>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Email</ControlLabel>
-                        <Col sm={10}>
-                            <FormControl 
-                                type="email"
-                                onChange={this._setEmail} 
-                                placeholder="email"                      
-                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Password</ControlLabel>
-                        <Col sm={10}>
-                            <FormControl
-                                type="password"
-                                onChange={this._setPassword}
-                                placeholder="password"
-                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <Col smOffset={2} sm={10}>
-                            <Button className="btn btn-success" type ="submit">Submit</Button>
-                        </Col>
-                    </FormGroup>
-                </Form>                      
+                    <Col s={12} m={5}>
+                        <CardPanel className="teal lighten-4 black-text">
+                        <h6>Please Log In</h6>
+                        <form onSubmit={this._handleSubmit}>
+                                    <Input 
+                                        label="Email" 
+                                        type="email"
+                                        onChange={this._setEmail} 
+                                        />
+                           
+                     
+                                    <Input
+                                        label="Password"
+                                        type="password"
+                                        onChange={this._setPassword}
+                                        />
+          
+                                    <Button waves="light" type ="submit">Submit</Button>
+                   
+                        </form>
+                        <a href="/#/signup" className="new-account">Create an account!</a>
+                    </CardPanel>
+                </Col>
             </div>
         )
     }   

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, hashHistory } from 'react-router';
-import Bootstrap from 'react-bootstrap';
 import './css/style.css';
 import Login from './app/components/LandingPage/Login/index';
 import NewUser from './app/components/LandingPage/NewUser/index';

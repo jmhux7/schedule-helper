@@ -43,27 +43,23 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div className="login-container">
+            <div className="landing-container">
                 <h3>Welcome to the Schedule Helper</h3>
-                    <Col s={12} m={5}>
-                        <CardPanel className="teal lighten-4 black-text">
+                <Col className="login-container">
+                    <CardPanel className="teal lighten-4 black-text">
                         <h6>Please Log In</h6>
                         <form onSubmit={this._handleSubmit}>
-                                    <Input 
-                                        label="Email" 
-                                        type="email"
-                                        onChange={this._setEmail} 
-                                        />
-                           
-                     
-                                    <Input
-                                        label="Password"
-                                        type="password"
-                                        onChange={this._setPassword}
-                                        />
-          
-                                    <Button waves="light" type ="submit">Submit</Button>
-                   
+                            <Input 
+                                label="Email" 
+                                type="email"
+                                onChange={this._setEmail} 
+                                />                 
+                            <Input
+                                label="Password"
+                                type="password"
+                                onChange={this._setPassword}
+                                />
+                            <Button waves="light" type ="submit">Submit</Button>                   
                         </form>
                         <a href="/#/signup" className="new-account">Create an account!</a>
                     </CardPanel>

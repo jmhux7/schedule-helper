@@ -1,5 +1,6 @@
-#login-wrapper {
-    text-align: center;
+.landing-container {
+    height: 100%;
+    width: 100%;
 }
 
 .hero-image {
@@ -44,10 +45,14 @@
     margin-top: 20%;
 }
 
-
 .new-user-container {
     width: 40%;
     margin-left: 30%;
+}
+
+.login-container {
+    width: 30%;
+    margin-left: 35%;
 }
 
 

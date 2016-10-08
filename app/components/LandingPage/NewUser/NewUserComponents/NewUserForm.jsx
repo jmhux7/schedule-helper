@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Button, Nav, NavItem, NavDropdown, MenuItem, Table, Grid, Row, Col, Input, FormGroup, Form, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
+import { Col, Row, Input, Button, CardPanel } from 'react-materialize';
 
 import HandleNewUser from './HandleNewUser';
-
 
 export default class NewUserForm extends Component {
     constructor () {
@@ -87,86 +86,50 @@ export default class NewUserForm extends Component {
     }
 
     render () {
-        return (
-            <div className="container">
-            <h3>Create an account to automate your schedule</h3>
-                <Form horizontal onSubmit={this._handleSubmit}>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">First Name</ControlLabel>  
-                        <Col sm={10}>              
-                            <FormControl 
+        return (            
+            <Col className="new-user-container">
+                <CardPanel className="light-blue lighten-4 black-text">
+                    <h3>Create an account</h3>
+                        <form onSubmit={this._handleSubmit}>                    
+                            <Input 
                                 type="text" 
                                 onChange={this._setFirstName} 
-                                placeholder="first name" 
-                                />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Last Name</ControlLabel>  
-                        <Col sm={10}>  
-                            <FormControl 
+                                label="First Name"
+                                />                  
+                            <Input 
                                 type="text" 
                                 onChange={this._setLastName} 
-                                placeholder="last name"
+                                label="Last Name"
                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Email</ControlLabel>  
-                        <Col sm={10}>  
-                            <FormControl 
+                            <Input 
                                 type="email" 
                                 onChange={this._setEmail} 
-                                placeholder="email" 
+                                label="Email" 
                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">I am the schedule admin?</ControlLabel>  
-                        <Col sm={10}>  
-                            <Checkbox
+                            <Input
                                 type="checkbox"
+                                label="Are you the schedule administrator?"
                                 onClick={this._setIsAdmin}
                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Admin Code</ControlLabel>  
-                        <Col sm={10}>  
-                            <FormControl
+                            <Input
                                 type="number"
                                 max="999"
-                                placeholder="if applicable enter your admin code"
+                                label="If you are the admin, what is your code?"
                                 onChange={this._setAdminKey}
                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Password</ControlLabel>  
-                        <Col sm={10}>
-                            <FormControl 
+                            <Input 
                                 type="password"
                                 onChange={this._setPassword}
-                                placeholder="password" 
+                                label="Password" 
                                 />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel className="nav-form-text">Verify your password</ControlLabel> 
-                        <Col sm={10}>
-                            <FormControl 
-                            type="password" 
-                            onChange={this._setPasswordAgain}
-                            placeholder="Verify your password" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup> 
-                        <Col sm={10}>
-                            <Button className="btn btn-success" type="submit">Submit</Button>
-                        </Col>
-                    </FormGroup>
-                </Form>
-            </div>
+                            <Input 
+                                type="password" 
+                                onChange={this._setPasswordAgain}
+                                label="Verify your password" />                    
+                            <Button className="light-blue darken-4" type="submit">Submit</Button>                    
+                        </form>
+                    </CardPanel>
+                </Col>
         )
     }
 }

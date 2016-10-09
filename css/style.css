@@ -55,5 +55,37 @@
     margin-left: 35%;
 }
 
+.admin-dash-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+#teacher-schedule-card {
+    width: 30%;
+    height: 30%;
+    margin-left: 15%;
+    float: left;
+    margin-top: 7%;
+}
+
+#meeting-schedule-card {
+    width: 30%;
+    height: 30%;
+    /*display: inline-block;*/
+    float: left;
+    margin-left: 10%;
+    margin-top: 7%;
+}
+
+.admin-card {
+    height: 400px;
+    padding: 50px;
+}
+
+.schedule-card-content {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 
 

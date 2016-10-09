@@ -7,6 +7,7 @@ import NewUser from './app/components/LandingPage/NewUser/index';
 import AdminView from './app/components/AdminView/index';
 import UserView from './app/components/UserView/index';
 
+
 ReactDOM.render(
   <Router history={ hashHistory }>
     <Route path="/" component={Login} />

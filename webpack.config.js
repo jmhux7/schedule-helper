@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: 'app.jsx',
   output: {
@@ -7,10 +9,17 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
+      jquery: "jquery/src/jquery"
     },
     extensions: ['', '.js', '.jsx']
   },
+
+
+
+
   module: {
+
+
     loaders: [
       {
         loader: 'babel-loader',
@@ -23,6 +32,10 @@ module.exports = {
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"
+      },
+      { 
+        test: /vendor\/.+\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       },
       {
         test: /\.png$/,
@@ -50,6 +63,14 @@ module.exports = {
       },
       { test: /vendor\/.+\.(jsx|js)$/,
         loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+      },
+      {
+        test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,
+        loader: "imports?this=>window"
+      },
+      {
+        test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,
+        loader: "imports?define=>false"
       }
     ]
   }

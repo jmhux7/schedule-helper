@@ -91,7 +91,6 @@ export default class CreateTeacherSchedule extends Component {
             <Col className="new-user-container">
                 <CardPanel className="light-blue lighten-4 black-text">
 
-                    <TeacherList />
                     <h3>Create an account</h3>
                         <form onSubmit={this._handleSubmit}>                    
                         

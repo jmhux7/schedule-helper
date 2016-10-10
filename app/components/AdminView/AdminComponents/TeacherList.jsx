@@ -3,51 +3,22 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { Col, Row, Input, Button, CardPanel, Collection, CollectionItem } from 'react-materialize';
 
+import TeacherCall from './TeacherCall';
+
 export default class TeacherList extends Component {
 
     render() {
         var teachers = this.props.allTeachers;
+        var teacherIds = this.props.teacherIds;
+
+        var teacherNames = teachers.map(function(item, i) {
+            return (
+                <CollectionItem href={ teacherIds[i] }>{item}</CollectionItem>
+            )
+        })
 
         return (
-
-            console.log("the teachers are " + teachers)
-
-            // var teachersOutput = 
-            // <Col className="teacher-list">
-            //     <Collection>
-            //         <CollectionItem href='#'>Alvin</CollectionItem>
-            //         <CollectionItem href='#' active>Alvin</CollectionItem>
-            //         <CollectionItem href='#'>Alvin</CollectionItem>
-            //         <CollectionItem href='#'>Alvin</CollectionItem>
-            //     </Collection>    
-            // </Col>
+            <Collection>{ teacherNames }</Collection>
         );
     }
 }
-
-//   render () {
-//     var Rambo = this.props.howdy;
-//     var services = [];
-//     function getServices(item) {
-//       return item.product_type === "service";
-//     }
-//     var Lambo = Rambo.filter(getServices);
-
-//     console.log("Rambo is: ", Rambo);
-//     console.log("Lambo is: ", Lambo);
-
-//     var Zambo = Lambo.map(function(item, i) {
-//       return (
-//         <tr>
-//           <td>{item.name}</td>
-//           <td>${item.cost}0</td>
-//           <td>{item.description}</td>
-//         </tr>
-//       )
-//     })
-
-//     return(
-//       <tbody>{Zambo}</tbody>
-//     )
-//   }
-// }

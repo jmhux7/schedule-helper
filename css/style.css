@@ -1,3 +1,12 @@
+.body-wrapper {
+    padding: 5px;
+}
+
+.nav-main {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .landing-container {
     height: 100%;
     width: 100%;
@@ -85,6 +94,12 @@
 .schedule-card-content {
     font-size: 24px;
     font-weight: bold;
+}
+
+.teacher-list-wrap {
+    width: 50%;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 

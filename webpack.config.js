@@ -9,7 +9,6 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
-      jquery: "jquery/src/jquery"
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -32,10 +31,6 @@ module.exports = {
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"
-      },
-      { 
-        test: /vendor\/.+\.(jsx|js)$/,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       },
       {
         test: /\.png$/,
@@ -60,9 +55,6 @@ module.exports = {
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
-      },
-      { test: /vendor\/.+\.(jsx|js)$/,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       },
       {
         test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,

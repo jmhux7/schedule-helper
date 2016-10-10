@@ -5,22 +5,35 @@ import ReactDOM from 'react-dom';
 import TimePicker from 'react-times';
 import TeacherScheduleBasket from './TeacherScheduleBasket';
 import TimePickerElement from './TimePickerElement';
+import NavBar from './../../GlobalComponents/NavBar';
 
 export default class CreateTeacherSchedule extends Component {
     constructor () {
         super();
         this.state = {
-            _scheduleBasket: [],
-            _numChildren: 0
+            _scheduleBasket: 0,
+            _numChildren: 1
         }
         this._addAfterBefore = this._addAfterBefore.bind(this);
+        this._cancelAfterBefore = this._cancelAfterBefore.bind(this);
     }
 
     _addAfterBefore(e) {
-        this.setState({
-            numChildren: this.state.numChildren + 1
-        });
         console.log("After and Before init")
+        this.setState({
+            _numChildren: this.state._numChildren += 1
+        });
+    }
+
+    _cancelAfterBefore(e) {
+        console.log("Cancel After Before");
+        this.setState({
+            _numChildren: this.state._numChildren -= 1
+        })
+    }
+
+    _addToScheduleBasket(e) {
+
     }
 
     _handleSubmit(e){
@@ -33,73 +46,22 @@ export default class CreateTeacherSchedule extends Component {
 
     render () {
 
-        const childrenClocks = [];
-
-        for (var i = 0; i < this.state.numChildren; i += 1) {
-            childrenClocks.push(<TimePickerElement />);
-        };
-
-        // return (
-        //     <ParentComponent addChild={this.onAddChild.bind(this)}>
-        //         {childrenClocks}
-        //     </ParentComponent>
-        // );
-
-
-
-
-
-        return (            
-            <Col className="new-user-container">
-                <CardPanel className="light-blue lighten-4 black-text">
-                    <h3>Set the schedule</h3>
-                    <form className="teacher-times" onSubmit={this._handleSubmit}>
-                        <p className="time-label">Available after:</p>
-                        <TimePicker />
-                        <p className="time-label">And before:</p>
-                        <TimePicker />
-                        <TimePickerElement clockItems={this.state.childrenClocks} />
-                    </form>
-                    <Button onClick={this._addAfterBefore}>Add availability window</Button>
-                </CardPanel>
-            </Col>
+        return (
+            <div>
+                <NavBar />            
+                <Col className="new-schedule-container">
+                    <CardPanel className="light-blue lighten-4 black-text">
+                        <h3>Set the schedule</h3>
+                        <form className="teacher-times" onSubmit={this._handleSubmit}>
+                            <TimePickerElement clockItems={this.state._numChildren} />
+                        </form>
+                        <Button onClick={this._addAfterBefore}>Add availability window</Button>
+                        <Button onClick={this._cancelAfterBefore}>Remove last availability window</Button>
+                        <Button onClick={this._addToScheduleBasket}>Add to schedule</Button>
+                    </CardPanel>
+                    <TeacherScheduleBasket />
+                </Col>
+            </div>
         )
     }
 }
-
-//     constructor () {
-//         this.state = {
-//             numChildren: 0
-//         };
-//     }
-
-//     render () {
-//         const children = [];
-
-//         for (var i = 0; i < this.state.numChildren; i += 1) {
-//             children.push(<ChildComponent number={i} />);
-//         };
-
-//         return (
-//             <ParentComponent addChild={this.onAddChild.bind(this)}>
-//                 {children}
-//             </ParentComponent>
-//         );
-//     }
-
-//     onAddChild () {
-//         this.setState({
-//             numChildren: this.state.numChildren + 1
-//         });
-//     }
-// }
-
-// class ParentComponent extends React.Component {
-//     render () {
-//         <div className="card calculator">
-//             <p><a href="#" onClick={this.props.addChild}>Add Another Child Component</a></p>
-//             <div id="children-pane">
-//               {this.props.children}
-//             </div>
-//         </div>
-//     }

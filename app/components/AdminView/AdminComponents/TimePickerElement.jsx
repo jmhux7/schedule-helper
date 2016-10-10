@@ -11,30 +11,15 @@ export default class TimePickerElement extends Component {
         super();
         this.state = {
             _scheduleBasket: 0,
-            _numChildren: 1
+            _numChildren: 1,
+            _hour: ''
         }
-
-        this._onHourChange = this._onHourChange.bind(this);
-        this._onMinuteChange = this._onMinuteChange.bind(this);
         this._onTimeChange = this._onTimeChange.bind(this);
-        this._onFocusChange = this._onFocusChange.bind(this);
-
-    }
-
-    _onHourChange(hour) {
-
-    }
- 
-    _onMinuteChange(minute) {
 
     }
  
     _onTimeChange(time) {
-
-    }
- 
-    _onFocusChange(focusStatue) {
-
+        console.log(time);
     }
 
 
@@ -46,22 +31,36 @@ export default class TimePickerElement extends Component {
 
         for (var i = 0; i < myClocks; i++) {
             childrenClocks.push(<TimePicker
-                                    onFocusChange={this._onFocusChange}
-                                    onHourChange={this._onHourChange}
-                                    onMinuteChange={this._onMinuteChange}
+                                    number={i + 1}
+                                    key={i + 1}
                                     onTimeChange={this._onTimeChange}
+                                    defaultTime="04:00"
                                 />);
         };
 
         var parseClocks = childrenClocks.map(function(item, i) {
-            return (
-                <CardPanel className="clock-container">
-                    <p className="time-label">Available after:</p>
-                        { item }
-                    <p className="time-label">And before:</p>    
-                        { item }
-                </CardPanel>
-            )
+            if(i % 2 ===0) {
+                return (
+                    <div>
+                        <h6>Schedule Block</h6>
+                        <CardPanel className="clock-container">
+                            <p className="time-label">Available after:</p>
+                            {item}
+                        </CardPanel>
+                    </div>
+                )
+            } else {
+                return (
+                    <div>
+                        <CardPanel className="clock-container">
+                            <p className="time-label">And before:</p>  
+                            {item}
+                        </CardPanel>
+                        <div className="div-sep"></div>
+                    </div>
+                )
+            }
+        
         })
 
         return (

@@ -12,7 +12,7 @@ export default class CreateTeacherSchedule extends Component {
         super();
         this.state = {
             _scheduleBasket: 0,
-            _numChildren: 1
+            _numChildren: 2
         }
         this._addAfterBefore = this._addAfterBefore.bind(this);
         this._cancelAfterBefore = this._cancelAfterBefore.bind(this);
@@ -21,14 +21,14 @@ export default class CreateTeacherSchedule extends Component {
     _addAfterBefore(e) {
         console.log("After and Before init")
         this.setState({
-            _numChildren: this.state._numChildren += 1
+            _numChildren: this.state._numChildren += 2
         });
     }
 
     _cancelAfterBefore(e) {
         console.log("Cancel After Before");
         this.setState({
-            _numChildren: this.state._numChildren -= 1
+            _numChildren: this.state._numChildren -= 2
         })
     }
 

@@ -106,6 +106,12 @@
     overflow-y: scroll;
 }
 
+.div-sep {
+    height: 2px;
+    margin-bottom: 5px;
+    background-color: #01579B;
+}
+
 
 
 

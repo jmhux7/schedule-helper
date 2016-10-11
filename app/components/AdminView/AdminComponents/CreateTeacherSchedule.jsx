@@ -6,7 +6,7 @@ import cookie from 'react-cookie';
 
 import TimePicker from 'react-times';
 import TeacherScheduleBasket from './TeacherScheduleBasket';
-import ProcessTeacherSchedule from './ProcessTeacherSchedule'
+// import ProcessTeacherSchedule from './ProcessTeacherSchedule'
 import TimePickerElement from './TimePickerElement';
 import NavBar from './../../GlobalComponents/NavBar';
 
@@ -18,13 +18,13 @@ export default class CreateTeacherSchedule extends Component {
             teacherName: cookie.load("teacherName"),
             teacherId: cookie.load("teacherId")
         }
-        this.updateSchedule = this.updateSchedule.bind(this);
+        this._updateSchedule = this._updateSchedule.bind(this);
         this._addClock = this._addClock.bind(this);
-        this._cancelClock = this._cancelClock.bind(this);
+        // this._cancelClock = this._cancelClock.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
 
-    updateSchedule(entry, index){
+    _updateSchedule(entry, index){
         let oldSchedule = this.state.scheduleBasket;
         let newEntry = Object.assign({},oldSchedule[index], entry);
         oldSchedule[index] = newEntry;
@@ -41,19 +41,19 @@ export default class CreateTeacherSchedule extends Component {
         })
     }
 
-    _cancelClock(e) {
-        console.log("Cancel After Before");
-        this.setState({
-            _numChildren: this.state._numChildren -= 2
-        })
-    }
+    // _cancelClock(e) {
+    //     console.log("Cancel After Before");
+    //     this.setState({
+    //         _numChildren: this.state._numChildren -= 2
+    //     })
+    // }
 
 
     _handleSubmit(e){
         e.preventDefault();
         const scheduleBasket = this.state.scheduleBasket;
-        const teacherId = this.state.teacherId;
-        this.props.postSchedule(scheduleBasket, teacherId);
+        const teachersId = this.state.teacherId;
+        this.props.postSchedule(scheduleBasket, teachersId);
     }
 
     render () {
@@ -67,17 +67,17 @@ export default class CreateTeacherSchedule extends Component {
                         <form onSubmit={this._handleSubmit}>
                             {this.state.scheduleBasket.map((item, index)=>{
                                 return <TimePickerElement
-                                    updateSchedule={this.updateSchedule}
+                                    updateSchedule={this._updateSchedule}
                                     key={index}
                                     number={index}
                                     />
                             })}
+                        <Button waves="light" type="submit">Add to schedule</Button>
                         </form>
                         <Button onClick={this._addClock}>Add more</Button>
                         <Button>Remove last schedule window</Button>
-                        <Button>Add to schedule</Button>
                     </CardPanel>
-                    <TeacherScheduleBasket />
+                    <TeacherScheduleBasket scheduleMounted={this.state.scheduleBasket} teachersId={this.state.teacherId} />
                 </Col>
             </div>
         )

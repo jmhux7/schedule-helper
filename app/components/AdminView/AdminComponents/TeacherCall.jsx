@@ -12,7 +12,6 @@ export default class TeacherCall extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: '',
       ready: false
     }
   }

@@ -4,10 +4,10 @@ import $ from 'jquery';
 import Firebase from 'firebase';
 var app = require('./../../Firebase');
 
-import TeacherList from './TeacherList';
+import EventList from './EventList';
 import NavBar from './../../GlobalComponents/NavBar';
 
-export default class TeacherCall extends Component {
+export default class EventCall extends Component {
 
   constructor(props) {
     super(props);
@@ -17,25 +17,22 @@ export default class TeacherCall extends Component {
   }
 
   componentDidMount () {
-    console.log("we are cookin");
-    var query = app.database().ref('users').orderByChild("is_admin").startAt(false).endAt(false);  
+    console.log("we are cookin events");
+    var query = app.database().ref('events');  
     query.once("value")
         .then(function(snapshot) {
-            var teacherArr = [];
-            var teacherIdArr = [];
-            var teacherNames = [];
+            var eventArr = [];
+            var eventIdArr = [];
             snapshot.forEach(function(childSnapshot) {
                 var key = childSnapshot.key;
                 var childData = childSnapshot.val();
                 console.log(childData);
-                teacherArr.push(childData.first_name + " " + childData.last_name);
-                teacherIdArr.push(key);
-                teacherNames.push(childData.first_name);
+                eventArr.push(childData.event_name);
+                eventIdArr.push(key);
             })
             this.setState({
-                items: teacherArr,
-                ids: teacherIdArr,
-                names: teacherNames,
+                items: eventArr,
+                ids: eventIdArr,
                 ready: true
             })
         }.bind(this))
@@ -46,14 +43,15 @@ export default class TeacherCall extends Component {
 //   }
 
   render() {
+    console.log("items are ", this.state.items);
     if(this.state.ready === true){
         return (
         <div>
             <NavBar />
             <div className="body-wrapper">
-                <h2>Registered Teachers</h2>
+                <h2>Registered Events</h2>
                 <div className="teacher-list-wrap">
-                    <TeacherList allTeachers={this.state.items} teacherIds={this.state.ids} teacherNames={this.state.names} />
+                    <EventList allEvents={this.state.items} eventIds={this.state.ids} />
                 </div>
             </div>
         </div>

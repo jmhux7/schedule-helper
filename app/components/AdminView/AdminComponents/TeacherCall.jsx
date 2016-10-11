@@ -25,24 +25,27 @@ export default class TeacherCall extends Component {
         .then(function(snapshot) {
             var teacherArr = [];
             var teacherIdArr = [];
+            var teacherNames = [];
             snapshot.forEach(function(childSnapshot) {
                 var key = childSnapshot.key;
                 var childData = childSnapshot.val();
                 console.log(childData);
                 teacherArr.push(childData.first_name + " " + childData.last_name);
                 teacherIdArr.push(key);
+                teacherNames.push(childData.first_name);
             })
             this.setState({
                 items: teacherArr,
                 ids: teacherIdArr,
+                names: teacherNames,
                 ready: true
             })
         }.bind(this))
   }
 
-  componentWillUnmount () {
-    this.serverRequest.abort();
-  }
+//   componentWillUnmount () {
+//     this.serverRequest.abort();
+//   }
 
   render() {
     if(this.state.ready === true){
@@ -52,7 +55,7 @@ export default class TeacherCall extends Component {
             <div className="body-wrapper">
                 <h2>Registered Teachers</h2>
                 <div className="teacher-list-wrap">
-                    <TeacherList allTeachers={this.state.items} teacherIds={this.state.ids} />
+                    <TeacherList allTeachers={this.state.items} teacherIds={this.state.ids} teacherNames={this.state.names} />
                 </div>
             </div>
         </div>

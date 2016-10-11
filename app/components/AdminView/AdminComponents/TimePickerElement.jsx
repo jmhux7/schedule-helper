@@ -6,67 +6,41 @@ import TimePicker from 'react-times';
 import CreateTeacherSchedule from './CreateTeacherSchedule';
 
 export default class TimePickerElement extends Component {
-
-    constructor () {
-        super();
-        this.state = {
-            _scheduleBasket: 0,
-            _numChildren: 1,
-            _hour: ''
-        }
-        this._onTimeChange = this._onTimeChange.bind(this);
-
-    }
  
-    _onTimeChange(time) {
+    onTimeChangeOne(time) {
+        console.log("poof! ** updating one");
         console.log(time);
+        this.props.updateSchedule({
+            after: time
+        },this.props.number)
     }
 
-
+    onTimeChangeTwo(time) {
+        console.log("poof! ** updating two")
+        console.log(time);
+        this.props.updateSchedule({
+            before: time
+        },this.props.number)
+    }
 
     render() {
-    
-        var myClocks = this.props.clockItems;
-        const childrenClocks = [];
-
-        for (var i = 0; i < myClocks; i++) {
-            childrenClocks.push(<TimePicker
-                                    number={i + 1}
-                                    key={i + 1}
-                                    onTimeChange={this._onTimeChange}
-                                    defaultTime="04:00"
-                                />);
-        };
-
-        var parseClocks = childrenClocks.map(function(item, i) {
-            if(i % 2 ===0) {
-                return (
-                    <div>
-                        <h6>Schedule Block</h6>
-                        <CardPanel className="clock-container">
-                            <p className="time-label">Available after:</p>
-                            {item}
-                        </CardPanel>
-                    </div>
-                )
-            } else {
-                return (
-                    <div>
-                        <CardPanel className="clock-container">
-                            <p className="time-label">And before:</p>  
-                            {item}
-                        </CardPanel>
-                        <div className="div-sep"></div>
-                    </div>
-                )
-            }
-        
-        })
-
-        return (
-            <div>
-                { parseClocks }
-            </div>
-        )
+        return <div className="entry">
+            <CardPanel className="clock-container">
+                <p>Available After:</p>
+                <TimePicker
+                    onTimeChange={this.onTimeChangeOne.bind(this)}
+                    defaultTime="9:00"
+                />
+            </CardPanel>
+            <CardPanel className="clock-container">
+                <p>And Before:</p>
+                <TimePicker
+                    onTimeChange={this.onTimeChangeTwo.bind(this)}
+                    defaultTime="04:00"
+                />
+            </CardPanel>
+            <div className="div-sep"></div>
+        </div>;
     }
+
 }

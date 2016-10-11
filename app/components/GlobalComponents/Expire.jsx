@@ -11,7 +11,6 @@ export default class Expire extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-    // reset the timer if children are changed
         if (nextProps.children !== this.props.children) {
             this.setTimer();
             this.setState({visible: true});
@@ -21,10 +20,8 @@ export default class Expire extends Component {
         this.setTimer();
     }
     setTimer() {
-    // clear any existing timer
         this._timer != null ? clearTimeout(this._timer) : null;
 
-    // hide after `delay` milliseconds
         this._timer = setTimeout(function(){
             this.setState({visible: false});
             this._timer = null;

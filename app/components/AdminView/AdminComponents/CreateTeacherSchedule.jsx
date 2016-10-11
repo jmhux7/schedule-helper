@@ -2,46 +2,58 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Col, Row, Input, Button, CardPanel } from 'react-materialize';
 import ReactDOM from 'react-dom';
+import cookie from 'react-cookie';
+
 import TimePicker from 'react-times';
 import TeacherScheduleBasket from './TeacherScheduleBasket';
+import ProcessTeacherSchedule from './ProcessTeacherSchedule'
 import TimePickerElement from './TimePickerElement';
 import NavBar from './../../GlobalComponents/NavBar';
 
 export default class CreateTeacherSchedule extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
-            _scheduleBasket: 0,
-            _numChildren: 2
+            scheduleBasket: [{},{}],
+            teacherName: cookie.load("teacherName"),
+            teacherId: cookie.load("teacherId")
         }
-        this._addAfterBefore = this._addAfterBefore.bind(this);
-        this._cancelAfterBefore = this._cancelAfterBefore.bind(this);
+        this.updateSchedule = this.updateSchedule.bind(this);
+        this._addClock = this._addClock.bind(this);
+        this._cancelClock = this._cancelClock.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
-    _addAfterBefore(e) {
-        console.log("After and Before init")
+    updateSchedule(entry, index){
+        let oldSchedule = this.state.scheduleBasket;
+        let newEntry = Object.assign({},oldSchedule[index], entry);
+        oldSchedule[index] = newEntry;
         this.setState({
-            _numChildren: this.state._numChildren += 2
-        });
+            scheduleBasket: oldSchedule
+        })
     }
 
-    _cancelAfterBefore(e) {
+    _addClock(){
+        let oldSchedule = this.state.scheduleBasket;
+        oldSchedule.push({})
+        this.setState({
+            scheduleBasket: oldSchedule
+        })
+    }
+
+    _cancelClock(e) {
         console.log("Cancel After Before");
         this.setState({
             _numChildren: this.state._numChildren -= 2
         })
     }
 
-    _addToScheduleBasket(e) {
-
-    }
 
     _handleSubmit(e){
         e.preventDefault();
-        const scheduleBasket = this.state._scheduleBasket
-
-        console.log(scheduleBasket)
-        this.props.assignSchedule(scheduleBasket);
+        const scheduleBasket = this.state.scheduleBasket;
+        const teacherId = this.state.teacherId;
+        this.props.postSchedule(scheduleBasket, teacherId);
     }
 
     render () {
@@ -51,13 +63,19 @@ export default class CreateTeacherSchedule extends Component {
                 <NavBar />            
                 <Col className="new-schedule-container">
                     <CardPanel className="light-blue lighten-4 black-text">
-                        <h3>Set the schedule</h3>
-                        <form className="teacher-times" onSubmit={this._handleSubmit}>
-                            <TimePickerElement clockItems={this.state._numChildren} />
+                        <h3>Set {this.state.teacherName}'s schedule</h3>
+                        <form onSubmit={this._handleSubmit}>
+                            {this.state.scheduleBasket.map((item, index)=>{
+                                return <TimePickerElement
+                                    updateSchedule={this.updateSchedule}
+                                    key={index}
+                                    number={index}
+                                    />
+                            })}
                         </form>
-                        <Button onClick={this._addAfterBefore}>Add availability window</Button>
-                        <Button onClick={this._cancelAfterBefore}>Remove last availability window</Button>
-                        <Button onClick={this._addToScheduleBasket}>Add to schedule</Button>
+                        <Button onClick={this._addClock}>Add more</Button>
+                        <Button>Remove last schedule window</Button>
+                        <Button>Add to schedule</Button>
                     </CardPanel>
                     <TeacherScheduleBasket />
                 </Col>

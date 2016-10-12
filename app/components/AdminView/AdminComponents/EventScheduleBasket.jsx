@@ -17,10 +17,10 @@ export default class EventScheduleBasket extends Component {
     _postSchedule(scheduleArr, eventId) {
         console.log(scheduleArr);
         console.log("post id ", eventId);
-        var newPostKey = app.database().ref().child('event-schedule').push().key;
+        var newPostKey = app.database().ref().child('schedule').push().key;
         var updates = {};
         console.log("new post key is ", newPostKey);
-        updates['/events/' + eventId + '/event-schedule' + '/' + newPostKey] = scheduleArr;
+        updates['/events/' + eventId + '/schedule' + '/' + newPostKey] = scheduleArr;
         return app.database().ref().update(updates);
     }
     

@@ -10,6 +10,7 @@ export default class GatherAvailability extends Component {
         super(props);
         this.state = {
             teacherAvailability: [],
+            eventsInfo:[],
             ready: false
         }
     }
@@ -17,7 +18,7 @@ export default class GatherAvailability extends Component {
     componentDidMount() {
         console.log("we are cookin all the schedules!!!");
         var query = app.database().ref('users').orderByChild("is_admin").startAt(false).endAt(false);
-        var querySchedule = app.database().ref('users/schedule');
+        var queryEvents = app.database().ref('events');
         query.once("value")
             .then(function(snapshot) {
                 var teacherArr = [];
@@ -27,20 +28,32 @@ export default class GatherAvailability extends Component {
                     var key = Object.keys(childData.schedule)[0];
                     var schedules = childData.schedule[key]
                     teacherArr.push({"id": key, "name": childData.last_name + ',' + childData.first_name, "schedule": schedules});
-                    // console.log(teacherArr)
                 })
                 this.setState({
-                    teachersInfo: teacherArr,
-                    ready: true
+                    teachersInfo: teacherArr
                 })
-                // console.log(this.state.teachersInfo)
-        }.bind(this))
+            }.bind(this))
+            queryEvents.once("value")
+                .then(function(eventShot) {
+                    var eventArr = [];
+                    eventShot.forEach(function(babySnapshot) {
+                        var key = babySnapshot.key;
+                        var babyData = babySnapshot.val();
+                        var key = Object.keys(babyData.schedule)[0];
+                        var eventSchedules = babyData.schedule[key];
+                        eventArr.push({"id": key, "name": babyData.event_name, "schedule": eventSchedules});
+                    })
+                    this.setState({
+                        eventsInfo: eventArr,
+                        ready: true
+                    })
+            }.bind(this))
     }
 
 
     render() {
         return(
-            <ScheduleFormula teacherData={this.state.teachersInfo} />
+            <ScheduleFormula teacherData={this.state.teachersInfo} eventData={this.state.eventsInfo} />
         )
     }
 }

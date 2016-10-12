@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookie';
-import {Col, Button} from 'react-materialize';
+import {Col, Button, CardPanel} from 'react-materialize';
 import NavBar from './../../GlobalComponents/NavBar';
 import GatherAvailability from './GatherAvailability';
-import moment from 'moment';
+// import moment from 'moment';
+// import Moment from 'react-moment';
+import later from 'later';
+import schedulejs from 'schedulejs';
 
 export default class ScheduleFormula extends Component {
 
@@ -11,7 +14,8 @@ export default class ScheduleFormula extends Component {
         super(props);
         this.state = {
             teacherAvailability: '',
-            eventAvailability: ''
+            eventAvailability: '',
+            ready: false
         }
         this._createScheduleVerbage = this._createScheduleVerbage.bind(this);
     }
@@ -38,14 +42,17 @@ export default class ScheduleFormula extends Component {
             var tempArr = []
             z.schedule.forEach(function(b, m) {
                 var eventScheduleItem = b;
-                tempArr.push(`every weekday after ${eventScheduleItem.after} and before ${eventScheduleItem.before}`);
+                tempArr.push(`every weekday after ${eventScheduleItem.after}am and before ${eventScheduleItem.before}pm`);
             })
             eventSchedule[n].availability = tempArr.join("");            
         }) 
         this.setState({
             teacherAvailability: allSchedules,
-            eventAvailability: eventSchedule
+            eventAvailability: eventSchedule,
+            ready: true
         })        
+        console.log(this.state.teacherAvailability)
+        console.log(this.state.eventAvailability)
     }
 
     
@@ -72,18 +79,19 @@ export default class ScheduleFormula extends Component {
 
         var resources = r(computerLab);
 
-        var start = new Date (2016, 9, 10);
+        var start = new Date (2016, 9, 17);
         schedule.date.localTime();
 
-        var s = schedule.create(tasks, resources, null, start);        
+        var s = schedule.create(tasks, resources, null, start);  
 
+
+        var scheduleResults = [];
         for(var id in s.scheduledTasks) {
             var st = s.scheduledTasks[id];
-            console.log(st);
-        //     document.write('<h2>' + id + '</h2>');
-        //     document.write('<p><b>Duration:</b> ' + st.duration + ' mins</p>');
-        //     document.write('<p><b>Start:</b> ' + new Date(st.earlyStart).toLocaleString() + '</p>');
-        //     document.write('<p><b>Finish:</b> ' + new Date(st.earlyFinish).toLocaleString() + '</p>');
+            scheduleResults.push(<CardPanel className="light-blue darken-4 white-text"><h2>{ id }</h2>
+            <p><b>Duration:</b>{ st.duration } mins</p>
+            <p><b>Start:</b>{ new Date(st.earlyStart).toLocaleString() }</p>
+            <p><b>Finish:</b>{ new Date(st.earlyFinish).toLocaleString() }</p></CardPanel>)
         }
 
         var data = this.props.teacherData;
@@ -92,11 +100,13 @@ export default class ScheduleFormula extends Component {
 
         return (
             <Col>
-                <Button onClick={() => that._createScheduleVerbage(data, eventData)}>Generate Schedule</Button>
+                <Button className="teacher-list-wrap blue darken-4 schedule-button" onClick={() => that._createScheduleVerbage(data, eventData)}>Generate Schedule</Button>
+                <div className="teacher-list-wrap">{scheduleResults}</div>
             </Col>
 
 
         )
+    
     }
 
 

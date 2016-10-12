@@ -10,10 +10,6 @@ import TeacherCall from './TeacherCall';
 export default class TeacherList extends Component {
 
     _sendToSchedule(name, id) {
-        console.log("send to schedule init");
-        console.log("name is ", name);
-        console.log("id is ", id);
-
         cookie.save("teacherName", name);
         cookie.save("teacherId", id);
     }
@@ -27,7 +23,7 @@ export default class TeacherList extends Component {
         var teacherNames = teachers.map(function(item, i) {
             return (
                 <div key={i}>
-                <Link to="/admin/teachers/make-schedule" key={i} onClick={() => that._sendToSchedule(teacherFirstNames[i], teacherIds[i])}>{item}</Link>
+                <Link to="/admin/teachers/make-schedule" className="teacher-list" key={i} onClick={() => that._sendToSchedule(teacherFirstNames[i], teacherIds[i])}>{item}</Link>
                 </div>
             )            
         })

@@ -32,9 +32,6 @@ export default class EventScheduleBasket extends Component {
         return (  
             <Col className="schedule-basket-container">
                 <Button waves="light" onClick={() => that._postSchedule(basket, eventId)}>Post Schedule</Button>
-                <CardPanel className="light-blue lighten-4 black-text">
-                    <h3>Preview this event's schedule</h3>
-                </CardPanel>
             </Col>
         )
     }    

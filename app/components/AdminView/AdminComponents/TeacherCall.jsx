@@ -41,10 +41,6 @@ export default class TeacherCall extends Component {
         }.bind(this))
   }
 
-//   componentWillUnmount () {
-//     this.serverRequest.abort();
-//   }
-
   render() {
     if(this.state.ready === true){
         return (

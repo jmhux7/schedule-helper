@@ -30,10 +30,7 @@ export default class TeacherScheduleBasket extends Component {
         var that = this
         return (  
             <Col className="schedule-basket-container">
-                <Button waves="light" onClick={() => that._postSchedule(basket, teacherId)}>Post Schedule</Button>
-                <CardPanel className="light-blue lighten-4 black-text">
-                    <h3>Preview your schedule</h3>
-                </CardPanel>
+                <Button className="blue darken-3" waves="light" onClick={() => that._postSchedule(basket, teacherId)}>Post Schedule</Button>
             </Col>
         )
     }    

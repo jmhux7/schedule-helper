@@ -88,8 +88,8 @@ export default class NewUserForm extends Component {
     render () {
         return (            
             <Col className="new-user-container">
-                <CardPanel className="light-blue lighten-4 black-text">
-                    <h3>Create an account</h3>
+                <CardPanel className="light-blue darken-4 white-text">
+                    <h3 className="new-user-head">Create an account</h3>
                         <form onSubmit={this._handleSubmit}>                    
                             <Input 
                                 type="text" 
@@ -126,7 +126,7 @@ export default class NewUserForm extends Component {
                                 type="password" 
                                 onChange={this._setPasswordAgain}
                                 label="Verify your password" />                    
-                            <Button className="light-blue darken-4" type="submit">Submit</Button>                    
+                            <Button className="blue darken-4" type="submit">Submit</Button>                    
                         </form>
                     </CardPanel>
                 </Col>

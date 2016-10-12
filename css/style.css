@@ -62,11 +62,17 @@
 .new-schedule-container {
     width: 40%;
     margin-left: 3%;
+    text-align: center;
 }
 
 .login-container {
+    margin-top: 10%;
     width: 30%;
     margin-left: 35%;
+}
+
+.new-account {
+    color: #eeeeee;
 }
 
 .admin-dash-wrapper {
@@ -77,7 +83,7 @@
 #teacher-schedule-card {
     width: 30%;
     height: 30%;
-    margin-left: 15%;
+    margin-left: 2%;
     float: left;
     margin-top: 7%;
 }
@@ -86,7 +92,7 @@
     width: 30%;
     height: 30%;
     float: left;
-    margin-left: 10%;
+    margin-left: 2%;
     margin-top: 7%;
 }
 
@@ -102,7 +108,7 @@
 
 .teacher-list-wrap {
     width: 50%;
-    height: 400px;
+    height: 600px;
     overflow-y: scroll;
 }
 
@@ -112,6 +118,58 @@
     background-color: #01579B;
 }
 
+.schedule-button {
+    margin: 5%;
+}
+
+.admin-links {
+    color: #eeeeee;
+}
+
+/* label color */
+.input-field label {
+    color: #eeeeee;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #fbe9e7;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #fbe9e7;
+    box-shadow: 0 1px 0 0 #fbe9e7;
+}
+
+.login-head {
+    margin-bottom: 4px;
+}
+
+.teacher-list {
+    margin-left: 5px;
+    font-size: 18px;
+    color: #0277bd;
+}
+
+.event-list {
+    margin-left: 5px;
+    font-size: 18px;
+    color: #0277bd;
+}
+
+.new-event-container {
+    width: 40%;
+    margin-left: 30%;
+}
+
+.event-landing-container {
+    text-align: center;
+}
+
+.existing-events-link {
+    color: #eeeeee;
+}
 
 
 

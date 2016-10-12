@@ -63,7 +63,7 @@ export default class CreateTeacherSchedule extends Component {
             <div>
                 <NavBar />            
                 <Col className="new-schedule-container">
-                    <CardPanel className="light-blue lighten-4 black-text">
+                    <CardPanel className="time-elements light-blue darken-4 black-text">
                         <h3>Set {this.state.teacherName}'s schedule</h3>
                         <form onSubmit={this._handleSubmit}>
                             {this.state.scheduleBasket.map((item, index)=>{
@@ -73,10 +73,9 @@ export default class CreateTeacherSchedule extends Component {
                                     number={index}
                                     />
                             })}
-                        <Button waves="light" type="submit">Add to schedule</Button>
                         </form>
-                        <Button onClick={this._addClock}>Add more</Button>
-                        <Button onClick={this._cancelClock}>Remove last schedule window</Button>
+                        <Button className="blue darken-3" onClick={this._addClock}>Add more</Button>
+                        <Button className ="blue darken-3" onClick={this._cancelClock}>Remove schedule window</Button>
                     </CardPanel>
                     <TeacherScheduleBasket scheduleMounted={this.state.scheduleBasket} teachersId={this.state.teacherId} />
                 </Col>

@@ -23,7 +23,7 @@ export default class HandleNewUser extends Component {
                         cookie.save("Admin", isAdmin)
                         cookie.save("userID", user.uid)
                         cookie.save("Name", firstName)
-                        window.location.href= "/";  
+                        window.location.href= "/#/admin/home";  
                       })
                     }).catch(e=>alert(e.message));
                 } else if (isAdmin === false) {
@@ -32,7 +32,7 @@ export default class HandleNewUser extends Component {
                         cookie.save("Admin", isAdmin)
                         cookie.save("userID", user.uid)
                         cookie.save("Name", firstName)
-                        window.location.href= "/";
+                        window.location.href= "/#/admin/home";
                     })
                   }).catch(e=>alert(e.message));
                 } else {

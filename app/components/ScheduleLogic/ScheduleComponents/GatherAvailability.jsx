@@ -27,7 +27,7 @@ export default class GatherAvailability extends Component {
                     var childData = childSnapshot.val();
                     var key = Object.keys(childData.schedule)[0];
                     var schedules = childData.schedule[key]
-                    teacherArr.push({"id": key, "name": childData.last_name + ',' + childData.first_name, "schedule": schedules});
+                    teacherArr.push({"id": key, "name": childData.last_name + ', ' + childData.first_name, "schedule": schedules});
                 })
                 this.setState({
                     teachersInfo: teacherArr
@@ -53,7 +53,10 @@ export default class GatherAvailability extends Component {
 
     render() {
         return(
-            <ScheduleFormula teacherData={this.state.teachersInfo} eventData={this.state.eventsInfo} />
+            <div>
+                <NavBar />
+                <ScheduleFormula teacherData={this.state.teachersInfo} eventData={this.state.eventsInfo} />
+            </div>
         )
     }
 }

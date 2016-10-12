@@ -27,7 +27,6 @@ export default class TeacherList extends Component {
         var teacherNames = teachers.map(function(item, i) {
             return (
                 <div key={i}>
-                <p>Hi there</p>
                 <Link to="/admin/teachers/make-schedule" key={i} onClick={() => that._sendToSchedule(teacherFirstNames[i], teacherIds[i])}>{item}</Link>
                 </div>
             )            

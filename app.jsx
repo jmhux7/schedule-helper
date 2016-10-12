@@ -12,6 +12,7 @@ import EventSchedule from './app/components/AdminView/eventSchedule';
 import EventSel from './app/components/AdminView/eventSel';
 import CreateTeacherSchedule from './app/components/AdminView/AdminComponents/CreateTeacherSchedule';
 import NewEvent from './app/components/AdminView/newEvent'; 
+import GatherAvailability from './app/components/ScheduleLogic/ScheduleComponents/GatherAvailability';
 
 ReactDOM.render(
   <Router history={ hashHistory }>
@@ -24,6 +25,8 @@ ReactDOM.render(
     <Route path="/admin/events" components={EventSel} />
     <Route path="/admin/events/new" component={NewEvent} />
     <Route path="/admin/events/make-schedule" component={EventSchedule} />
+    <Route path="/admin/schedules/test" component={GatherAvailability} />
+
 
 
   </Router>,

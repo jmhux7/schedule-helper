@@ -63,7 +63,7 @@ export default class CreateTeacherSchedule extends Component {
             <div>
                 <NavBar />            
                 <Col className="new-schedule-container">
-                    <CardPanel className="time-elements light-blue darken-4 black-text">
+                    <CardPanel className="time-elements light-blue darken-4 white-text">
                         <h3>Set {this.state.teacherName}'s schedule</h3>
                         <form onSubmit={this._handleSubmit}>
                             {this.state.scheduleBasket.map((item, index)=>{

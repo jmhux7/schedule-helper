@@ -73,8 +73,9 @@ export default class CreateEventSchedule extends Component {
                                     />
                             })}
                         </form>
-                        <Button className="blue darken-3" onClick={this._addClock}>Add more</Button>
-                        <Button className="blue darken-3" onClick={this._cancelClock}>Remove last schedule window</Button>
+                            <Input label="Length of Event/Meeting" type="text" />
+                            <Button className="blue darken-3" onClick={this._addClock}>Add more</Button>
+                            <Button className="blue darken-3" onClick={this._cancelClock}>Remove last schedule window</Button>
                     </CardPanel>
                     <EventScheduleBasket scheduleMounted={this.state.scheduleBasket} eventsId={this.state.eventId} />
                 </Col>

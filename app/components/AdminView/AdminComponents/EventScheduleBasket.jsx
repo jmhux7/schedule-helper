@@ -31,7 +31,7 @@ export default class EventScheduleBasket extends Component {
         var that = this
         return (  
             <Col className="schedule-basket-container">
-                <Button waves="light" onClick={() => that._postSchedule(basket, eventId)}>Post Schedule</Button>
+                <Button className="blue dark-4" waves="light" onClick={() => that._postSchedule(basket, eventId)}>Post Schedule</Button>
             </Col>
         )
     }    

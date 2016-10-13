@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookie';
 import NavBar from './../../GlobalComponents/NavBar';
+import HeroImage2 from './../../GlobalComponents/HeroImage2';
 import ScheduleFormula from './ScheduleFormula';
 var app = require('./../../Firebase');
 
@@ -55,6 +56,7 @@ export default class GatherAvailability extends Component {
         return(
             <div>
                 <NavBar />
+                <HeroImage2 />
                 <ScheduleFormula teacherData={this.state.teachersInfo} eventData={this.state.eventsInfo} />
             </div>
         )

@@ -27,10 +27,19 @@ export default class ScheduleFormula extends Component {
             var arr = []
             x.schedule.forEach(function(y, j) {
                 var scheduleItem = y;
-                if(j == 0) {
-                    arr.push(`after ${scheduleItem.after} and before ${scheduleItem.before}`);
-                } else {
-                    arr.push(` also after ${scheduleItem.after} and before ${scheduleItem.before}`);
+                var removeCoAfter = scheduleItem.after.replace(':','');
+                console.log(removeCoAfter);
+                var removeCoBefore = scheduleItem.before.replace(':','');
+                if(j == 0 && removeCoAfter < 1200 && removeCoAfter > 800 && removeCoBefore < 1200 && removeCoBefore > 800) {
+                    arr.push(`after ${scheduleItem.after}am and before ${scheduleItem.before}am`);
+                } else if(j == 0 && removeCoAfter < 1200 && removeCoAfter > 800 && removeCoBefore < 500) {
+                    arr.push(`after ${scheduleItem.after}am and before ${scheduleItem.before}pm`);
+                } else if(j > 0 && removeCoAfter < 1200 && removeCoAfter > 800 && removeCoBefore < 1200 && removeCoBefore > 800) {
+                    arr.push(` also after ${scheduleItem.after}am and before ${scheduleItem.before}am`);
+                } else if(j > 0 && removeCoAfter < 1200 && removeCoAfter > 800 && removeCoBefore < 500) {
+                    arr.push(` also after ${scheduleItem.after}am and before ${scheduleItem.before}pm`);
+                } else if(j > 0 && removeCoAfter < 500 && removeCoBefore < 500) {
+                    arr.push(` also after ${scheduleItem.after}pm and before ${scheduleItem.before}pm`);
                 }                                       
             })
             allSchedules[i].availability = arr.join("");
@@ -100,8 +109,11 @@ export default class ScheduleFormula extends Component {
 
         return (
             <Col>
-                <Button className="teacher-list-wrap blue darken-4 schedule-button" onClick={() => that._createScheduleVerbage(data, eventData)}>Generate Schedule</Button>
-                <div className="teacher-list-wrap">{scheduleResults}</div>
+                <Button className="generate-button blue darken-4 schedule-button" onClick={() => that._createScheduleVerbage(data, eventData)}>Generate Schedule</Button>
+                <div className="teacher-list-wrap">
+                    <h3 className="results-head">Results</h3>
+                    {scheduleResults}
+                </div>
             </Col>
 
 

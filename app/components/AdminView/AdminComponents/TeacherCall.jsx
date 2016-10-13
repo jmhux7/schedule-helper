@@ -47,7 +47,7 @@ export default class TeacherCall extends Component {
         <div>
             <NavBar />
             <div className="body-wrapper">
-                <h2>Registered Teachers</h2>
+                <h3 className="reg-teacher-head">Registered Teachers</h3>
                 <div className="teacher-list-wrap">
                     <TeacherList allTeachers={this.state.items} teacherIds={this.state.ids} teacherNames={this.state.names} />
                 </div>

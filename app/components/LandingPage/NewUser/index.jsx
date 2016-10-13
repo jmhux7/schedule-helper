@@ -8,7 +8,7 @@ export default class NewUser extends Component {
 
     render() {
         return (
-        <div>
+        <div>            
             <HandleNewUser />
         </div>
         )

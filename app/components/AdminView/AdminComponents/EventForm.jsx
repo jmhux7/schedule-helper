@@ -32,7 +32,7 @@ export default class EventForm extends Component {
     render() {
         return (
             <div className="event-landing-container">
-                <h3>Create a new event</h3>
+                <h3 className="new-event-head">Create a new event</h3>
                 <Col className="new-event-container">
                     <CardPanel className="light-blue darken-4 white-text">
                         <form onSubmit={this._handleSubmit}>

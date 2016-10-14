@@ -1,0 +1,10 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    ".indexOn": [
+      "is_admin",
+      "timestamp"
+    ]
+  }
+}

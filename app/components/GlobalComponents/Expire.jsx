@@ -40,10 +40,10 @@ export default class Expire extends Component {
 
 }
 
-    Expire.propTypes = {
-        delay: React.PropTypes.number
-    };
+    // Expire.propTypes = {
+    //     delay: React.PropTypes.number
+    // };
 
-    Expire.defaultProps = {
-        delay: 2000
-    };
+    // Expire.defaultProps = {
+    //     delay: 2000
+    // };

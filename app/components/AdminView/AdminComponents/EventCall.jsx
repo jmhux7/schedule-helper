@@ -49,7 +49,7 @@ export default class EventCall extends Component {
         <div>
             <NavBar />
             <div className="body-wrapper">
-                <h2>Registered Events</h2>
+                <h2 className="reg-events-head">Registered Events</h2>
                 <div className="teacher-list-wrap">
                     <EventList allEvents={this.state.items} eventIds={this.state.ids} />
                 </div>

@@ -44,10 +44,9 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div className="landing-container">
-                <h3>Welcome to the Schedule Helper</h3>
                 <Col className="login-container">
-                    <CardPanel className="teal lighten-4 black-text">
-                        <h6>Please Log In</h6>
+                    <CardPanel className="light-blue darken-4 white-text">
+                        <h5 className="login-head">Please Log In</h5>
                         <form onSubmit={this._handleSubmit}>
                             <Input 
                                 label="Email" 
@@ -59,7 +58,7 @@ export default class LoginForm extends Component {
                                 type="password"
                                 onChange={this._setPassword}
                                 />
-                            <Button waves="light" type ="submit">Submit</Button>                   
+                            <Button waves="light" className="blue darken-3" type ="submit">Submit</Button>                   
                         </form>
                         <a href="/#/signup" className="new-account">Create an account!</a>
                     </CardPanel>

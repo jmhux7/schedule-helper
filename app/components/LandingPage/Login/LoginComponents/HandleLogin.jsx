@@ -22,7 +22,7 @@ export default class HandleLogin extends Component {
                 var isAdmin = snapshot.child("is_admin").val();
                 cookie.save("Name", firstName);
                 cookie.save("Admin", isAdmin);
-                window.location.href= "/";
+                window.location.href= "/#/admin/home";
             })
         }).catch(function(e){
             alert(e)

@@ -27,7 +27,7 @@ export default class EventList extends Component {
         var eventShow = events.map(function(item, i) {
             return (
                 <div key={i}>
-                <Link to="/admin/events/make-schedule" key={i} onClick={() => that._sendToSchedule(events[i], eventIds[i])}>{item}</Link>
+                <Link className="event-list" to="/admin/events/make-schedule" key={i} onClick={() => that._sendToSchedule(events[i], eventIds[i])}>{item}</Link>
                 </div>
             )            
         })

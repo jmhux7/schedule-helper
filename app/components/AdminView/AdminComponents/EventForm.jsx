@@ -31,18 +31,19 @@ export default class EventForm extends Component {
 
     render() {
         return (
-            <div className="landing-container">
-                <h3>Create a new event</h3>
+            <div className="event-landing-container">
+                <h3 className="new-event-head">Create a new event</h3>
                 <Col className="new-event-container">
-                    <CardPanel className="teal lighten-4 black-text">
+                    <CardPanel className="light-blue darken-4 white-text">
                         <form onSubmit={this._handleSubmit}>
                             <Input 
                                 label="Event Name" 
                                 type="text"
                                 onChange={this._setName} 
                                 />                 
-                            <Button waves="light" type ="submit">Submit</Button>                   
+                            <Button className="blue darken-4" waves="light" type ="submit">Submit</Button>                   
                         </form>
+                    <a className="existing-events-link" href="/#/admin/events"><p>Go to existing events</p></a>
                     </CardPanel>
                 </Col>
             </div>

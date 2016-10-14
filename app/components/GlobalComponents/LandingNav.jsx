@@ -7,7 +7,7 @@ export default class LandingNav extends Component {
 
     render() {
         return (
-            <Navbar className="nav-main light-blue darken-4" brand="Schedule Helper" right>
+            <Navbar className="nav-main light-blue darken-4" brand="Rapid Schedule" right>
                 <NavItem href='#'>About</NavItem>
             </Navbar>
         )   

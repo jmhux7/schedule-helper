@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import cookie from 'react-cookie';
 import TimePicker from 'react-times';
 import EventScheduleBasket from './EventScheduleBasket';
-// import ProcessTeacherSchedule from './ProcessTeacherSchedule'
 import TimePickerElement from './TimePickerElement';
 import NavBar from './../../GlobalComponents/NavBar';
 
@@ -60,7 +59,7 @@ export default class CreateEventSchedule extends Component {
 
         return (
             <div>
-                <NavBar />            
+                <NavBar />
                 <Col className="new-schedule-container">
                     <CardPanel className="light-blue darken-4 white-text">
                         <h3>Set {this.state.eventName} schedule</h3>

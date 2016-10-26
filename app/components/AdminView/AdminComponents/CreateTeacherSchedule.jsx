@@ -6,7 +6,6 @@ import cookie from 'react-cookie';
 
 import TimePicker from 'react-times';
 import TeacherScheduleBasket from './TeacherScheduleBasket';
-// import ProcessTeacherSchedule from './ProcessTeacherSchedule'
 import TimePickerElement from './TimePickerElement';
 import NavBar from './../../GlobalComponents/NavBar';
 
@@ -61,23 +60,23 @@ export default class CreateTeacherSchedule extends Component {
 
         return (
             <div>
-                <NavBar />            
+                <NavBar />
                 <Col className="new-schedule-container">
-                    <CardPanel className="time-elements light-blue darken-4 white-text">
-                        <h3>Set {this.state.teacherName}'s schedule</h3>
-                        <form onSubmit={this._handleSubmit}>
-                            {this.state.scheduleBasket.map((item, index)=>{
-                                return <TimePickerElement
-                                    updateSchedule={this._updateSchedule}
-                                    key={index}
-                                    number={index}
-                                    />
-                            })}
-                        </form>
-                        <Button className="blue darken-3" onClick={this._addClock}>Add more</Button>
-                        <Button className ="blue darken-3" onClick={this._cancelClock}>Remove schedule window</Button>
-                    </CardPanel>
-                    <TeacherScheduleBasket scheduleMounted={this.state.scheduleBasket} teachersId={this.state.teacherId} />
+                  <CardPanel className="time-elements light-blue darken-4 white-text">
+                    <h3>Set {this.state.teacherName}s schedule</h3>
+                    <form onSubmit={this._handleSubmit}>
+                      {this.state.scheduleBasket.map((item, index)=>{
+                        return <TimePickerElement
+                          updateSchedule={this._updateSchedule}
+                          key={index}
+                          number={index}
+                          />
+                      })}
+                    </form>
+                    <Button className="blue darken-3" onClick={this._addClock}>Add more</Button>
+                    <Button className ="blue darken-3" onClick={this._cancelClock}>Remove schedule window</Button>
+                  </CardPanel>
+                  <TeacherScheduleBasket scheduleMounted={this.state.scheduleBasket} teachersId={this.state.teacherId} />
                 </Col>
             </div>
         )

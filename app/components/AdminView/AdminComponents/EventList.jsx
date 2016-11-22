@@ -9,6 +9,8 @@ import EventCall from './EventCall';
 
 export default class EventList extends Component {
 
+    //showing current events - persisting event info to change
+
     _sendToSchedule(name, id) {
         console.log("send to schedule init");
         console.log("name is ", name);

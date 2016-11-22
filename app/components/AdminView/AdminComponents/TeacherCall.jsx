@@ -17,7 +17,6 @@ export default class TeacherCall extends Component {
   }
 
   componentDidMount () {
-    console.log("we are cookin");
     var query = app.database().ref('users').orderByChild("is_admin").startAt(false).endAt(false);  
     query.once("value")
         .then(function(snapshot) {
@@ -27,7 +26,6 @@ export default class TeacherCall extends Component {
             snapshot.forEach(function(childSnapshot) {
                 var key = childSnapshot.key;
                 var childData = childSnapshot.val();
-                console.log(childData);
                 teacherArr.push(childData.first_name + " " + childData.last_name);
                 teacherIdArr.push(key);
                 teacherNames.push(childData.first_name);

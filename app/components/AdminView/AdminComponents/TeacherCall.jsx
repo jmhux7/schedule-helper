@@ -7,6 +7,8 @@ var app = require('./../../Firebase');
 import TeacherList from './TeacherList';
 import NavBar from './../../GlobalComponents/NavBar';
 
+//grabbing list of registered teachers
+
 export default class TeacherCall extends Component {
 
   constructor(props) {
